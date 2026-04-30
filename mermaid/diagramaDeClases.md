@@ -45,12 +45,21 @@ classDiagram
     class UsuarioDAO {
         +buscarPorNombre(String nombre) Usuario
         +insertarUsuario(Usuario usuario) void
+        +eliminarUsuario(int id) void
     }
 
     class EntradaListaDAO {
         +buscarPorId(int idUsuario) List<EntradaLista>
         +insertarEntradaLista(EntradaLista entrada) EntradaLista
         +borrarPorId(int id) void
+    }
+
+    class DesarrolladoraDAO {
+        +devolverTodos() List<Desarrolladora>
+        +buscarPorNombre(String nombre) Desarrolladora
+        +buscarPorId(int id) Desarrolladora
+        +insertarDesarrolladora(Desarrolladora desarrolladora) void
+        +eliminarDesarrolladora(int id) void
     }
 
     %% Relaciones entre Entidades
