@@ -15,7 +15,7 @@ flowchart LR
         aCU8(Buscar Videojuegos)
         aCU9(Ver Lista Personal)
         aCU10(Actualizar Horas Jugadas)
-        aCU11(Marcar Juego como Completado)
+        aCU11(Cambiar estado del juego)
         aCU12(Cerrar Sesion)
         aCU13(Ver Perfil de Usuario)
         aCU14(Ver Estadisticas Globales)
