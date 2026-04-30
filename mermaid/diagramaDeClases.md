@@ -2,6 +2,7 @@
 classDiagram
     %% Entidades (Modelos)
     class Usuario {
+        -String urlImagen
         -int id
         -String username
         -String password
@@ -9,6 +10,7 @@ classDiagram
     }
 
     class Videojuego {
+        -String urlImagen
         -long id
         -String titulo
         -String descripcion
@@ -28,6 +30,7 @@ classDiagram
     }
 
     class Desarrolladora {
+        -String urlImagen
         -int id
         -String nombre
         -String pais
