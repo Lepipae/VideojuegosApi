@@ -18,6 +18,7 @@ public class EntradaLista {
     private long idVideojuego;
     private int idUsuario;
 
+    public EntradaLista() {}
 
     public EntradaLista(long miId, int horasJugadas, double nota, String resenya, Estado estado, int idVideojuego, int idUsuario) {
         setMiId(miId);
