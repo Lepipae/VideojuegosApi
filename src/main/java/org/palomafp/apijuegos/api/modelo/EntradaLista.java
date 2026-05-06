@@ -70,7 +70,7 @@ public class EntradaLista {
         return videojuego;
     }
 
-    public void setVideojuego(Videojuego videojuego) {
+    public void setVideojuego(long videojuego) {
 
     }
 

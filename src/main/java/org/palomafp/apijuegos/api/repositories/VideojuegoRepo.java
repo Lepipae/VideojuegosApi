@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VideojuegoRepo extends MongoRepository<Videojuego, String> {
-    public Videojuego findByMiId(long miId);
-    public Videojuego findByNombre(String nombre);
-    public void deleteByMiId(long miId);
+    Videojuego findByMiId(long miId);
+    Videojuego findByNombre(String nombre);
+    void deleteByMiId(long miId);
 }

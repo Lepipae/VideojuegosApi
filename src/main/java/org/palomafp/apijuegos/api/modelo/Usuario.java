@@ -1,18 +1,38 @@
 package org.palomafp.apijuegos.api.modelo;
 
 import org.palomafp.apijuegos.api.modelo.enums.Rol;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Collection;
+
+@Document (collection = "Users")
 public class Usuario {
+    @Id
+    private String id;
+
+    private int miId;
     private String nombre;
     private String urlImagen;
     private String contrasenia;
     private Rol rol;
 
-    public Usuario(String nombre, String urlImagen, String contrasenia, Rol rol) {
+    public Usuario() {}
+
+    public Usuario(String nombre, String urlImagen, String contrasenia, Rol rol, int miId) {
         setNombre(nombre);
         setUrlImagen(urlImagen);
         setContrasenia(contrasenia);
         setRol(rol);
+        setMiId(miId);
+    }
+
+    public void setMiId(int miId) {
+        this.miId = miId;
+    }
+
+    public int getMiId() {
+        return miId;
     }
 
     public String getNombre() {
