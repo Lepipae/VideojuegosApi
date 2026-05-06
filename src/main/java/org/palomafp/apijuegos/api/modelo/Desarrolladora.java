@@ -1,7 +1,9 @@
 package org.palomafp.apijuegos.api.modelo;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "Desarrolladoras")
 public class Desarrolladora {
     @Id
     private String id;
