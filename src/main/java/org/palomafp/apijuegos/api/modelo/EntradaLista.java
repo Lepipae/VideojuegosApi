@@ -1,31 +1,64 @@
 package org.palomafp.apijuegos.api.modelo;
 
 import org.palomafp.apijuegos.api.modelo.enums.Estado;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+
+@Document(collection = "EntradaLista")
 public class EntradaLista {
-    private long id;
+    @Id
+    private String id;
+
+    private long miId;
     private int horasJugadas;
     private double nota;
     private String resenya;
     private Estado estado;
-    private Videojuego videojuego;
-    private Usuario usuario;
+    private long idVideojuego;
+    private int idUsuario;
 
-    public EntradaLista(long id, int horasJugadas, double nota, String resenya, Estado estado, long idVideojuego, int usuario) {
-        setId(id);
+
+    public EntradaLista(long miId, int horasJugadas, double nota, String resenya, Estado estado, int idVideojuego, int idUsuario) {
+        setMiId(miId);
         setHorasJugadas(horasJugadas);
         setNota(nota);
         setResenya(resenya);
         setEstado(estado);
-        setVideojuego(idVideojuego);
+        setIdVideojuego(idVideojuego);
+        setIdUsuario(idUsuario);
     }
 
-    public long getId() {
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public long getIdVideojuego() {
+        return idVideojuego;
+    }
+
+    public void setIdVideojuego(long idVideojuego) {
+        this.idVideojuego = idVideojuego;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public long getMiId() {
+        return miId;
+    }
+
+    public void setMiId(long miId) {
+        this.miId = miId;
     }
 
     public int getHorasJugadas() {
@@ -66,13 +99,6 @@ public class EntradaLista {
         this.estado = estado;
     }
 
-    public Videojuego getVideojuego() {
-        return videojuego;
-    }
-
-    public void setVideojuego(long videojuego) {
-
-    }
 
 
 
