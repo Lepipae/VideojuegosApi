@@ -14,11 +14,12 @@ public class Videojuego {
     private String descripcion;
     private String urlImagen;
     private double notaMedia;
+    private int idDesarrolladora;
     private ArrayList<String> tags;
 
     public  Videojuego(){}
 
-    public Videojuego(String id, long miId, String nombre, String descripcion, String urlImagen, double notaMedia, ArrayList<String> tags) {
+    public Videojuego(String id, long miId, String nombre, String descripcion, String urlImagen, double notaMedia, ArrayList<String> tags, int idDesarrolladora) {
         this.id = id;
         setMiId(miId);
         setNombre(nombre);
@@ -26,6 +27,15 @@ public class Videojuego {
         setUrlImagen(urlImagen);
         setNotaMedia(notaMedia);
         setTags(tags);
+        setIdDesarrolladora(idDesarrolladora);
+    }
+
+    public void setIdDesarrolladora(int idDesarrolladora) {
+        this.idDesarrolladora = idDesarrolladora;
+    }
+
+    public int getIdDesarrolladora() {
+        return idDesarrolladora;
     }
 
     public String getId() {
