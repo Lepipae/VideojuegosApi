@@ -18,9 +18,9 @@ public class Videojuego {
 
     public  Videojuego(){}
 
-    public Videojuego(String id, long MiId, String nombre, String descripcion, String urlImagen, double notaMedia, ArrayList<String> tags) {
+    public Videojuego(String id, long miId, String nombre, String descripcion, String urlImagen, double notaMedia, ArrayList<String> tags) {
         this.id = id;
-        setMiId(MiId);
+        setMiId(miId);
         setNombre(nombre);
         setDescripcion(descripcion);
         setUrlImagen(urlImagen);
@@ -37,11 +37,11 @@ public class Videojuego {
     }
 
     public long getMiId() {
-        return MiId;
+        return miId;
     }
 
     public void setMiId(long miId) {
-        this.MiId = miId;
+        this.miId = miId;
     }
 
     public String getNombre() {
