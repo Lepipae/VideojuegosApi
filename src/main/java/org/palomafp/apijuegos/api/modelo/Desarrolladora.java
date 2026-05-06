@@ -1,24 +1,40 @@
 package org.palomafp.apijuegos.api.modelo;
 
+import org.springframework.data.annotation.Id;
+
 public class Desarrolladora {
-    private int id;
+    @Id
+    private String id;
+
+    private int miId;
     private String urlImagen;
     private String nombre;
     private String pais;
 
-    public Desarrolladora(String pais, String nombre, String urlImagen, int id) {
-        this.pais = pais;
-        this.nombre = nombre;
-        this.urlImagen = urlImagen;
+    public Desarrolladora() {}
+
+    public Desarrolladora(String id, String pais, String nombre, String urlImagen, int miId) {
+        this.id = id;
+        setPais(pais);
+        setNombre(nombre);
+        setUrlImagen(urlImagen);
+        setMiId(miId);
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getMiId() {
+        return miId;
+    }
+
+    public void setMiId(int miId) {
+        this.miId = miId;
     }
 
     public String getUrlImagen() {
