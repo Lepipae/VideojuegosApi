@@ -9,4 +9,5 @@ public interface EntradaListaRepo extends MongoRepository<EntradaLista, String> 
     List<EntradaLista> findByIdUsuario(int id);
 
     EntradaLista findByMiId(long id);
+    void deleteByMiId(long id);
 }
