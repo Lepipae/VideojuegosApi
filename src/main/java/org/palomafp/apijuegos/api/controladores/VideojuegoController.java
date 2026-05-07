@@ -43,7 +43,7 @@ public class VideojuegoController {
         return videojuegoRepo.save(videojuego);
     }
 
-    @DeleteMapping("/{miId")
+    @DeleteMapping("/{miId}")
     public void borrarVideojuego(@RequestBody long miId) {
         videojuegoRepo.deleteByMiId(miId);
     }
