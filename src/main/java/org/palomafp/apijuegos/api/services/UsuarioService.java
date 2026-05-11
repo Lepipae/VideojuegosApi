@@ -42,6 +42,6 @@ public class UsuarioService {
 
     public void borrarPorMiId(int id) {
         //TODO: Asegurarse de que se borran todos los juegos de la lista de este usuario
-
+        usuarioRepo.deleteByMiId(id);
     }
 }
