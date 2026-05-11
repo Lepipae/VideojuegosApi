@@ -34,8 +34,8 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public void guardarUsuario(@RequestBody Usuario usuario) {
-        usuarioRepo.save(usuario);
+    public Usuario guardarUsuario(@RequestBody Usuario usuario) {
+        return usuarioRepo.save(usuario);
     }
 
 
