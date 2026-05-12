@@ -10,4 +10,10 @@ public interface EntradaListaRepo extends MongoRepository<EntradaLista, String> 
 
     EntradaLista findByMiId(long id);
     void deleteByMiId(long id);
+
+    EntradaLista findTopByOrderByMiIdDesc();
+    
+    default EntradaLista encontrarUltimoId() {
+        return findTopByOrderByMiIdDesc();
+    }
 }

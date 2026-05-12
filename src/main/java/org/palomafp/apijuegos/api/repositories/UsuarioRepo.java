@@ -7,4 +7,10 @@ public interface UsuarioRepo extends MongoRepository<Usuario, String> {
     Usuario findByMiId(int miId);
     Usuario findByNombre(String nombre);
     void deleteByMiId(int miId);
+
+    Usuario findTopByOrderByMiIdDesc();
+    
+    default Usuario encontrarUltimoId() {
+        return findTopByOrderByMiIdDesc();
+    }
 }

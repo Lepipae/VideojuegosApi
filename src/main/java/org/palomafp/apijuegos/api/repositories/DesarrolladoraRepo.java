@@ -7,4 +7,10 @@ public interface DesarrolladoraRepo extends MongoRepository<Desarrolladora, Stri
     Desarrolladora findByMiId(int miId);
     Desarrolladora findByNombre(String nombre);
     void deleteByMiId(int miId);
+    
+    Desarrolladora findTopByOrderByMiIdDesc();
+    
+    default Desarrolladora encontrarUltimoId() {
+        return findTopByOrderByMiIdDesc();
+    }
 }

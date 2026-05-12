@@ -13,4 +13,10 @@ public interface VideojuegoRepo extends MongoRepository<Videojuego, String> {
     List<Videojuego> findByTags(String tags);
     List<Videojuego> findByIdDesarrolladora(int idDesarrolladora);
     void deleteByMiId(long miId);
+    
+    Videojuego findTopByOrderByMiIdDesc();
+    
+    default Videojuego encontrarUltimoId() {
+        return findTopByOrderByMiIdDesc();
+    }
 }

@@ -39,8 +39,8 @@ public class VideojuegoController {
     }
 
     @PostMapping
-    public Videojuego crearVideojuego(@RequestBody Videojuego videojuego) {
-        return videojuegoService.crearVideojuego(videojuego);
+    public Videojuego guardar(@RequestBody Videojuego videojuego) {
+        return videojuegoService.guardar(videojuego);
     }
 
     @DeleteMapping("/{miId}")

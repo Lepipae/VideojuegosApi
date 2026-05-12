@@ -33,14 +33,23 @@ public class VideojuegoService {
         return videojuegoRepo.findByIdDesarrolladora(desarrolladora);
     }
 
-    public Videojuego crearVideojuego(Videojuego videojuego) {
-        Videojuego videojuegoViejo1 = videojuegoRepo.findById(videojuego.getId()).orElse(null);
-        Videojuego videojuegoViejo2 = videojuegoRepo.findByNombre(videojuego.getNombre());
-        if (videojuegoViejo1 != null || videojuegoViejo2 != null) {
-            throw new IllegalArgumentException("Videojuego existente");
+    public Videojuego guardar(Videojuego videojuego) {
+        if (videojuego.getId() == null) {
+            Videojuego ultimo = videojuegoRepo.encontrarUltimoId();
+            long nuevoId = (ultimo != null) ? ultimo.getMiId() + 1 : 1;
+            videojuego.setMiId(nuevoId);
+
+            Videojuego videojuegoViejo = videojuegoRepo.findByNombre(videojuego.getNombre());
+            if (videojuegoViejo != null) {
+                throw new IllegalArgumentException("Videojuego existente");
+            }
         } else {
-            return videojuegoRepo.save(videojuego);
+            Videojuego videojuegoViejo = videojuegoRepo.findByNombre(videojuego.getNombre());
+            if (videojuegoViejo != null && !videojuegoViejo.getId().equals(videojuego.getId())) {
+                throw new IllegalArgumentException("Videojuego existente");
+            }
         }
+        return videojuegoRepo.save(videojuego);
     }
 
     public void borrarVideojuego(long id) {

@@ -29,15 +29,23 @@ public class UsuarioService {
         return usuarioRepo.findByNombre(nombre);
     }
 
-    public Usuario guardarUsuario(Usuario usuario) {
-        Usuario viejo1 = usuarioRepo.findByNombre(usuario.getNombre());
-        Usuario viejo2 = usuarioRepo.findByMiId(usuario.getMiId());
+    public Usuario guardar(Usuario usuario) {
+        if (usuario.getId() == null) {
+            Usuario ultimo = usuarioRepo.encontrarUltimoId();
+            int nuevoId = (ultimo != null) ? ultimo.getMiId() + 1 : 1;
+            usuario.setMiId(nuevoId);
 
-        if (viejo1 != null || viejo2 != null) {
-            throw new IllegalArgumentException("Usuario existente");
+            Usuario viejo1 = usuarioRepo.findByNombre(usuario.getNombre());
+            if (viejo1 != null) {
+                throw new IllegalArgumentException("Usuario existente");
+            }
         } else {
-            return usuarioRepo.save(usuario);
+            Usuario viejo1 = usuarioRepo.findByNombre(usuario.getNombre());
+            if (viejo1 != null && !viejo1.getId().equals(usuario.getId())) {
+                throw new IllegalArgumentException("Usuario existente");
+            }
         }
+        return usuarioRepo.save(usuario);
     }
 
     public void borrarPorMiId(int id) {

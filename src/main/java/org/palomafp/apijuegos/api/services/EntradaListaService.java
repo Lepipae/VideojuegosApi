@@ -26,6 +26,11 @@ public class EntradaListaService {
     }
 
     public EntradaLista guardar(EntradaLista entradaLista) {
+        if (entradaLista.getId() == null) {
+            EntradaLista ultimo = entradaListaRepo.encontrarUltimoId();
+            long nuevoId = (ultimo != null) ? ultimo.getMiId() + 1 : 1;
+            entradaLista.setMiId(nuevoId);
+        }
         return entradaListaRepo.save(entradaLista);
     }
 }

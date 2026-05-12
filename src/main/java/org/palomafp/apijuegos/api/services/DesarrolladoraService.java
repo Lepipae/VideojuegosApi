@@ -26,6 +26,11 @@ public class DesarrolladoraService {
     }
 
     public Desarrolladora guardar(Desarrolladora desarrolladora) {
+        if (desarrolladora.getId() == null) {
+            Desarrolladora ultimo = desarrolladoraRepo.encontrarUltimoId();
+            int nuevoId = (ultimo != null) ? ultimo.getMiId() + 1 : 1;
+            desarrolladora.setMiId(nuevoId);
+        }
         return desarrolladoraRepo.save(desarrolladora);
     }
 
