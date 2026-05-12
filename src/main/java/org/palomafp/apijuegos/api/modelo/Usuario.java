@@ -4,9 +4,7 @@ import org.palomafp.apijuegos.api.modelo.enums.Rol;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Collection;
-
-@Document (collection = "Users")
+@Document(collection = "Users")
 public class Usuario {
     @Id
     private String id;
@@ -17,7 +15,8 @@ public class Usuario {
     private String contrasenia;
     private Rol rol;
 
-    public Usuario() {}
+    public Usuario() {
+    }
 
     public Usuario(String nombre, String urlImagen, String contrasenia, Rol rol, int miId) {
         setNombre(nombre);
