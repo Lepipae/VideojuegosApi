@@ -1,7 +1,7 @@
 package org.palomafp.apijuegos.api.controladores;
 
 import org.palomafp.apijuegos.api.modelo.Desarrolladora;
-import org.palomafp.apijuegos.api.repositories.DesarrolladoraRepo;
+import org.palomafp.apijuegos.api.services.DesarrolladoraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,30 +12,30 @@ import java.util.List;
 public class DesarrolladoraController {
 
     @Autowired
-    private DesarrolladoraRepo desarrolladoraRepo;
+    private DesarrolladoraService desarrolladoraService;
 
     @GetMapping
     public List<Desarrolladora> obtenerDesarrolladoras() {
-        return desarrolladoraRepo.findAll();
+        return desarrolladoraService.obtenerDesarrolladoras();
     }
 
     @GetMapping("/nombre/{nombre}")
     public Desarrolladora obtenerPorNombre(String nombre) {
-        return desarrolladoraRepo.findByNombre(nombre);
+        return desarrolladoraService.obtenerPorNombre(nombre);
     }
 
     @GetMapping("/id/{id}")
     public Desarrolladora obtenerPorId(int id) {
-        return desarrolladoraRepo.findByMiId(id);
+        return desarrolladoraService.obtenerPorId(id);
     }
 
     @PostMapping
     public Desarrolladora guardar(@RequestBody Desarrolladora desarrolladora) {
-        return desarrolladoraRepo.save(desarrolladora);
+        return desarrolladoraService.guardar(desarrolladora);
     }
 
     @DeleteMapping("/{id}")
     public void borrarDesarrolladora(@PathVariable int id) {
-        desarrolladoraRepo.deleteByMiId(id);
+        desarrolladoraService.borrarDesarrolladora(id);
     }
 }

@@ -1,7 +1,7 @@
 package org.palomafp.apijuegos.api.controladores;
 
 import org.palomafp.apijuegos.api.modelo.Usuario;
-import org.palomafp.apijuegos.api.repositories.UsuarioRepo;
+import org.palomafp.apijuegos.api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,31 +11,31 @@ import java.util.List;
 @RequestMapping("api/usuarios")
 public class UsuarioController {
     @Autowired
-    private UsuarioRepo usuarioRepo;
+    private UsuarioService usuarioService;
 
     @GetMapping
     public List<Usuario> obtenerTodos() {
-        return usuarioRepo.findAll();
+        return usuarioService.obtenerTodos();
     }
 
-    @GetMapping("/{miI}")
+    @GetMapping("/{miId}")
     public Usuario obtenerUsuarioPorId(@PathVariable int miId) {
-        return usuarioRepo.findByMiId(miId);
+        return usuarioService.obtenerPorMiId(miId);
     }
 
     @GetMapping("/nombre/{nombre}")
     public Usuario obtenerUsuarioPorNombre(@PathVariable String nombre) {
-        return usuarioRepo.findByNombre(nombre);
+        return usuarioService.obtenerPorNombre(nombre);
     }
 
     @DeleteMapping
     public void borrarUsuarioPorMiId(@RequestBody int miId) {
-        usuarioRepo.deleteByMiId(miId);
+        usuarioService.borrarPorMiId(miId);
     }
 
     @PostMapping
     public Usuario guardarUsuario(@RequestBody Usuario usuario) {
-        return usuarioRepo.save(usuario);
+        return usuarioService.guardarUsuario(usuario);
     }
 
 
