@@ -7,28 +7,57 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Servicio que gestiona la logica de negocio de Usuario
+ * @author Andrés López de la Vía
+ */
 @Service
 public class UsuarioService {
 
     @Autowired
     private UsuarioRepo usuarioRepo;
 
+    /**
+     * Obtiene todos los usuarios almacenados en la base de datos
+     * @return Lista de todos los usuarios
+     */
     public List<Usuario> obtenerTodos() {
         return usuarioRepo.findAll();
     }
 
+    /**
+     * Obtiene un usuario a partir de su id interno
+     * @param id Id interno del usuario
+     * @return Usuario encontrado o null
+     */
     public Usuario obtenerPorMiId(int id) {
         return usuarioRepo.findByMiId(id);
     }
 
+    /**
+     * Obtiene un usuario a partir de su id de MongoDB
+     * @param id Id de MongoDB del usuario
+     * @return Usuario encontrado o null
+     */
     public Usuario obtenerPorId(String id) {
         return usuarioRepo.findById(id).orElse(null);
     }
 
+    /**
+     * Obtiene un usuario a partir de su nombre
+     * @param nombre Nombre del usuario a buscar
+     * @return Usuario encontrado o null
+     */
     public Usuario obtenerPorNombre(String nombre) {
         return usuarioRepo.findByNombre(nombre);
     }
 
+    /**
+     * Guarda un usuario en la base de datos verificando que el nombre no exista
+     * @param usuario Usuario a guardar
+     * @return Usuario guardado
+     * @throws IllegalArgumentException si el usuario ya existe
+     */
     public Usuario guardar(Usuario usuario) {
         if (usuario.getId() == null) {
             Usuario ultimo = usuarioRepo.encontrarUltimoId();
@@ -48,6 +77,10 @@ public class UsuarioService {
         return usuarioRepo.save(usuario);
     }
 
+    /**
+     * Borra un usuario a partir de su id interno
+     * @param id Id interno del usuario
+     */
     public void borrarPorMiId(int id) {
         //TODO: Asegurarse de que se borran todos los juegos de la lista de este usuario
         usuarioRepo.deleteByMiId(id);

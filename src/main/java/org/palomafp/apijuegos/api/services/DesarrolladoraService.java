@@ -7,24 +7,47 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Servicio que gestiona la logica de negocio de Desarrolladora
+ * @author Andrés López de la Vía
+ */
 @Service
 public class DesarrolladoraService {
 
     @Autowired
     private DesarrolladoraRepo desarrolladoraRepo;
 
+    /**
+     * Obtiene todas las desarrolladoras almacenadas
+     * @return Lista de desarrolladoras
+     */
     public List<Desarrolladora> obtenerDesarrolladoras() {
         return desarrolladoraRepo.findAll();
     }
 
+    /**
+     * Obtiene una desarrolladora a partir de su nombre
+     * @param nombre Nombre de la desarrolladora
+     * @return Desarrolladora encontrada o null
+     */
     public Desarrolladora obtenerPorNombre(String nombre) {
         return desarrolladoraRepo.findByNombre(nombre);
     }
 
+    /**
+     * Obtiene una desarrolladora a partir de su id interno
+     * @param id Id interno
+     * @return Desarrolladora encontrada o null
+     */
     public Desarrolladora obtenerPorId(int id) {
         return desarrolladoraRepo.findByMiId(id);
     }
 
+    /**
+     * Guarda una desarrolladora en la base de datos
+     * @param desarrolladora Objeto a guardar
+     * @return Desarrolladora guardada
+     */
     public Desarrolladora guardar(Desarrolladora desarrolladora) {
         if (desarrolladora.getId() == null) {
             Desarrolladora ultimo = desarrolladoraRepo.encontrarUltimoId();
@@ -34,6 +57,10 @@ public class DesarrolladoraService {
         return desarrolladoraRepo.save(desarrolladora);
     }
 
+    /**
+     * Borra una desarrolladora a partir de su id interno
+     * @param id Id interno
+     */
     public void borrarDesarrolladora(int id) {
         desarrolladoraRepo.deleteByMiId(id);
     }

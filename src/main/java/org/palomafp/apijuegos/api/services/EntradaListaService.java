@@ -7,28 +7,55 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Servicio que gestiona la logica de negocio de EntradaLista
+ * @author Andrés López de la Vía
+ */
 @Service
 public class EntradaListaService {
 
     @Autowired
     private EntradaListaRepo entradaListaRepo;
 
+    /**
+     * Obtiene las entradas de la lista pertenecientes a un usuario
+     * @param id Id del usuario
+     * @return Lista de entradas del usuario
+     */
     public List<EntradaLista> findByIdUsuario(int id) {
         return entradaListaRepo.findByIdUsuario(id);
     }
 
+    /**
+     * Obtiene una entrada de la lista a partir de su id interno
+     * @param id Id interno
+     * @return EntradaLista encontrada o null
+     */
     public EntradaLista findById(long id) {
         return entradaListaRepo.findByMiId(id);
     }
 
+    /**
+     * Borra una entrada a partir de su id interno
+     * @param id Id interno
+     */
     public void borrarEntrada(int id) {
         entradaListaRepo.deleteByMiId(id);
     }
 
+    /**
+     * Borra las entradas asociadas a un videojuego
+     * @param idVideojuego Id del videojuego
+     */
     public void borrarPorVideojuego(long idVideojuego) {
         entradaListaRepo.deleteByIdVideojuego(idVideojuego);
     }
 
+    /**
+     * Guarda una entrada en la base de datos
+     * @param entradaLista Objeto a guardar
+     * @return EntradaLista guardada
+     */
     public EntradaLista guardar(EntradaLista entradaLista) {
         if (entradaLista.getId() == null) {
             EntradaLista ultimo = entradaListaRepo.encontrarUltimoId();

@@ -4,6 +4,10 @@ import org.palomafp.apijuegos.api.modelo.enums.Rol;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Clase que representa a un usuario del sistema
+ * @author Andrés López de la Vía
+ */
 @Document(collection = "Users")
 public class Usuario {
     @Id
@@ -15,9 +19,20 @@ public class Usuario {
     private String contrasenia;
     private Rol rol;
 
+    /**
+     * Constructor por defecto
+     */
     public Usuario() {
     }
 
+    /**
+     * Constructor con parametros
+     * @param nombre        Nombre del usuario
+     * @param urlImagen     URL de la imagen de perfil
+     * @param contrasenia   Contraseña del usuario
+     * @param rol           Rol del usuario en el sistema
+     * @param miId          Id interno de la base de datos
+     */
     public Usuario(String nombre, String urlImagen, String contrasenia, Rol rol, int miId) {
         setNombre(nombre);
         setUrlImagen(urlImagen);
@@ -26,26 +41,50 @@ public class Usuario {
         setMiId(miId);
     }
 
+    /**
+     * Establece el id interno
+     * @param miId Id interno a establecer
+     */
     public void setMiId(int miId) {
         this.miId = miId;
     }
 
+    /**
+     * Obtiene el id interno
+     * @return Id interno
+     */
     public int getMiId() {
         return miId;
     }
 
+    /**
+     * Obtiene el id de MongoDB
+     * @return Id de MongoDB
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Establece el id de MongoDB
+     * @param id Id a establecer
+     */
     public void setId(String id) {
         this.id = id;
     }
 
+    /**
+     * Obtiene el nombre del usuario
+     * @return Nombre del usuario
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Establece el nombre del usuario
+     * @param nombre Nombre a establecer
+     */
     public void setNombre(String nombre) {
         if (nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("El nombre es obligatorio");
@@ -53,10 +92,18 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    /**
+     * Obtiene la url de la imagen de perfil
+     * @return URL de la imagen
+     */
     public String getUrlImagen() {
         return urlImagen;
     }
 
+    /**
+     * Establece la url de la imagen de perfil
+     * @param urlImagen URL a establecer
+     */
     public void setUrlImagen(String urlImagen) {
         if (urlImagen == null || urlImagen.isBlank()) {
             this.urlImagen = "placeholder";
@@ -65,10 +112,18 @@ public class Usuario {
         }
     }
 
+    /**
+     * Obtiene la contraseña
+     * @return Contraseña
+     */
     public String getContrasenia() {
         return contrasenia;
     }
 
+    /**
+     * Establece la contraseña
+     * @param contrasenia Contraseña a establecer
+     */
     public void setContrasenia(String contrasenia) {
         if (contrasenia == null || contrasenia.isBlank() || contrasenia.length() < 8) {
             throw new IllegalArgumentException("Contraseña no valida");
@@ -76,10 +131,18 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
+    /**
+     * Obtiene el rol del usuario
+     * @return Rol del usuario
+     */
     public Rol getRol() {
         return rol;
     }
 
+    /**
+     * Establece el rol del usuario
+     * @param rol Rol a establecer
+     */
     public void setRol(Rol rol) {
         this.rol = rol;
     }
