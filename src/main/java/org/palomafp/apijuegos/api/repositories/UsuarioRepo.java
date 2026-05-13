@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  * Repositorio para la clase Usuario
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 public interface UsuarioRepo extends MongoRepository<Usuario, String> {
     /**

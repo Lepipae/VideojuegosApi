@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Clase que representa a una desarrolladora de videojuegos
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 @Document(collection = "Desarrolladoras")
 public class Desarrolladora {

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Servicio que gestiona la logica de negocio de EntradaLista
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 @Service
 public class EntradaListaService {
@@ -49,6 +49,14 @@ public class EntradaListaService {
      */
     public void borrarPorVideojuego(long idVideojuego) {
         entradaListaRepo.deleteByIdVideojuego(idVideojuego);
+    }
+
+    /**
+     * Borra las entradas asociadas a un usuario
+     * @param idUsuario Id del usuario
+     */
+    public void borrarPorUsuario(int idUsuario) {
+        entradaListaRepo.deleteByIdUsuario(idUsuario);
     }
 
     /**

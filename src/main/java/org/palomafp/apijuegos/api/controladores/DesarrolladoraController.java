@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Controlador de la clase desarrolladora que interactua con la clase
  * desarrolladoraService para insertar eliminar y revisar datos
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 @RestController
 @RequestMapping("api/desarrolladora")

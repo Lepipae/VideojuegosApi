@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Clase que representa a un usuario del sistema
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 @Document(collection = "Users")
 public class Usuario {

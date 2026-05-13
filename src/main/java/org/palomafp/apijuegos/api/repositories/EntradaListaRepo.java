@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Repositorio para la clase EntradaLista
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 public interface EntradaListaRepo extends MongoRepository<EntradaLista, String> {
     /**
@@ -35,6 +35,12 @@ public interface EntradaListaRepo extends MongoRepository<EntradaLista, String> 
      * @param idVideojuego Id del videojuego
      */
     void deleteByIdVideojuego(long idVideojuego);
+
+    /**
+     * Elimina las entradas asociadas a un usuario
+     * @param idUsuario Id del usuario
+     */
+    void deleteByIdUsuario(int idUsuario);
 
     /**
      * Encuentra la entrada con el id interno mas alto

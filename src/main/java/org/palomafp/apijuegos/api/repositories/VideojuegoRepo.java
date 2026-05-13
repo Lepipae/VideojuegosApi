@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Repositorio para la clase Videojuego
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 @Repository
 public interface VideojuegoRepo extends MongoRepository<Videojuego, String> {

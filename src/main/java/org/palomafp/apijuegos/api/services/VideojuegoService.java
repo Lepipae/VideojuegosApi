@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Servicio que gestiona la logica de negocio de Videojuego
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 @Service
 public class VideojuegoService {

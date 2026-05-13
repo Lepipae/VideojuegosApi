@@ -9,13 +9,16 @@ import java.util.List;
 
 /**
  * Servicio que gestiona la logica de negocio de Usuario
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 @Service
 public class UsuarioService {
 
     @Autowired
     private UsuarioRepo usuarioRepo;
+
+    @Autowired
+    private EntradaListaService entradaListaService;
 
     /**
      * Obtiene todos los usuarios almacenados en la base de datos
@@ -82,7 +85,7 @@ public class UsuarioService {
      * @param id Id interno del usuario
      */
     public void borrarPorMiId(int id) {
-        //TODO: Asegurarse de que se borran todos los juegos de la lista de este usuario
+        entradaListaService.borrarPorUsuario(id);
         usuarioRepo.deleteByMiId(id);
     }
 }

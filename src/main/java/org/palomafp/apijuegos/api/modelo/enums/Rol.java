@@ -2,7 +2,7 @@ package org.palomafp.apijuegos.api.modelo.enums;
 
 /**
  * Enumeracion que representa los roles posibles de un usuario
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 public enum Rol {
     /**

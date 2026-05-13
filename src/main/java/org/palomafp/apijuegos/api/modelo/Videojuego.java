@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Clase que representa a un videojuego
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 @Document(collection = "Videojuegos")
 public class Videojuego {

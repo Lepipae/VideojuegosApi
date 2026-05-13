@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Clase que representa una entrada en la lista de videojuegos de un usuario
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 @Document(collection = "EntradaLista")
 public class EntradaLista {

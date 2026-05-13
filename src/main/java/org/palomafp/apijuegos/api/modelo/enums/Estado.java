@@ -2,7 +2,7 @@ package org.palomafp.apijuegos.api.modelo.enums;
 
 /**
  * Enumeracion que representa el estado de un videojuego en la lista
- * @author Andrés López de la Vía
+ * @author Andrés López
  */
 public enum Estado {
     /**
