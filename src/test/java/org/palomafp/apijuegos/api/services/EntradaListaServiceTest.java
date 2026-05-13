@@ -94,4 +94,11 @@ class EntradaListaServiceTest {
         entradaListaService.borrarEntrada(1); // Service method accepts int, repo accepts long? wait. Service parameter is int
         verify(entradaListaRepo, times(1)).deleteByMiId(1L); // The conversion might be implicit or explicit in the real code
     }
+
+    @Test
+    void borrarPorVideojuego() {
+        doNothing().when(entradaListaRepo).deleteByIdVideojuego(1L);
+        entradaListaService.borrarPorVideojuego(1L);
+        verify(entradaListaRepo, times(1)).deleteByIdVideojuego(1L);
+    }
 }

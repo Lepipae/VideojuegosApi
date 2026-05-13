@@ -25,6 +25,10 @@ public class EntradaListaService {
         entradaListaRepo.deleteByMiId(id);
     }
 
+    public void borrarPorVideojuego(long idVideojuego) {
+        entradaListaRepo.deleteByIdVideojuego(idVideojuego);
+    }
+
     public EntradaLista guardar(EntradaLista entradaLista) {
         if (entradaLista.getId() == null) {
             EntradaLista ultimo = entradaListaRepo.encontrarUltimoId();

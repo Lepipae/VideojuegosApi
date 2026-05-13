@@ -52,8 +52,11 @@ public class VideojuegoService {
         return videojuegoRepo.save(videojuego);
     }
 
+    @Autowired
+    private EntradaListaService entradaListaService;
+
     public void borrarVideojuego(long id) {
-        // TODO: asegurarse de que el juego se borra de las listas en las que esta
+        entradaListaService.borrarPorVideojuego(id);
         videojuegoRepo.deleteByMiId(id);
     }
 }

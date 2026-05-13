@@ -20,6 +20,9 @@ class VideojuegoServiceTest {
     @Mock
     private VideojuegoRepo videojuegoRepo;
 
+    @Mock
+    private EntradaListaService entradaListaService;
+
     @InjectMocks
     private VideojuegoService videojuegoService;
 
@@ -81,8 +84,10 @@ class VideojuegoServiceTest {
 
     @Test
     void borrarVideojuego() {
+        doNothing().when(entradaListaService).borrarPorVideojuego(1L);
         doNothing().when(videojuegoRepo).deleteByMiId(1L);
         videojuegoService.borrarVideojuego(1L);
+        verify(entradaListaService, times(1)).borrarPorVideojuego(1L);
         verify(videojuegoRepo, times(1)).deleteByMiId(1L);
     }
 
