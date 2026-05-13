@@ -113,6 +113,7 @@ class UsuarioServiceTest {
 
         Usuario resultado = usuarioService.guardar(nuevo);
         assertEquals(1, nuevo.getMiId());
+        assertNotNull(resultado);
         verify(usuarioRepo).save(nuevo);
     }
 
