@@ -46,8 +46,9 @@ public class Desarrolladora {
     public void setUrlImagen(String urlImagen) {
         if (urlImagen == null || urlImagen.isBlank()) {
             this.urlImagen = "placeholder";
+        } else {
+            this.urlImagen = urlImagen;
         }
-        this.urlImagen = urlImagen;
     }
 
     public String getNombre() {
