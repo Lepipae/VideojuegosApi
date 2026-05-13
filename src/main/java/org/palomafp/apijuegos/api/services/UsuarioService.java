@@ -3,6 +3,7 @@ package org.palomafp.apijuegos.api.services;
 import org.palomafp.apijuegos.api.modelo.Usuario;
 import org.palomafp.apijuegos.api.repositories.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,10 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepo usuarioRepo;
+
+    // Inyectamos el PasswordEncoder (definido en SecurityConfig) para poder encriptar contraseñas
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private EntradaListaService entradaListaService;
@@ -62,6 +67,12 @@ public class UsuarioService {
      * @throws IllegalArgumentException si el usuario ya existe
      */
     public Usuario guardar(Usuario usuario) {
+        // Encriptamos la contraseña del usuario antes de proceder a guardarlo.
+        // Verificamos que exista y que no esté ya encriptada (BCrypt suele empezar por "$2a$")
+        if (usuario.getContrasenia() != null && !usuario.getContrasenia().startsWith("$2a$")) {
+            usuario.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
+        }
+
         if (usuario.getId() == null) {
             Usuario ultimo = usuarioRepo.encontrarUltimoId();
             int nuevoId = (ultimo != null) ? ultimo.getMiId() + 1 : 1;

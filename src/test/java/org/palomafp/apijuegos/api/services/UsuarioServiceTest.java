@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.palomafp.apijuegos.api.modelo.Usuario;
 import org.palomafp.apijuegos.api.repositories.UsuarioRepo;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +24,9 @@ class UsuarioServiceTest {
 
     @Mock
     private EntradaListaService entradaListaService;
+
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private UsuarioService usuarioService;
@@ -181,5 +185,22 @@ class UsuarioServiceTest {
         Usuario resultado = usuarioService.guardar(aActualizar);
         assertNotNull(resultado);
         verify(usuarioRepo).save(aActualizar);
+    }
+
+    @Test
+    void guardarNuevoUsuarioEncriptaContrasenia() {
+        Usuario nuevo = new Usuario();
+        nuevo.setNombre("NuevoConPass");
+        nuevo.setContrasenia("12345678");
+
+        when(passwordEncoder.encode("12345678")).thenReturn("$2a$10$encodedPasswordHash");
+        when(usuarioRepo.encontrarUltimoId()).thenReturn(null);
+        when(usuarioRepo.findByNombre("NuevoConPass")).thenReturn(null);
+        when(usuarioRepo.save(any(Usuario.class))).thenReturn(nuevo);
+
+        usuarioService.guardar(nuevo);
+        
+        verify(passwordEncoder).encode("12345678");
+        assertEquals("$2a$10$encodedPasswordHash", nuevo.getContrasenia());
     }
 }
