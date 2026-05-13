@@ -21,6 +21,9 @@ class UsuarioServiceTest {
     @Mock
     private UsuarioRepo usuarioRepo;
 
+    @Mock
+    private EntradaListaService entradaListaService;
+
     @InjectMocks
     private UsuarioService usuarioService;
 
