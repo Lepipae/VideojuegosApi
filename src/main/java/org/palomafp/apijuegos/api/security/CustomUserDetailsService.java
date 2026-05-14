@@ -1,5 +1,6 @@
 package org.palomafp.apijuegos.api.security;
 
+import org.jspecify.annotations.NullMarked;
 import org.palomafp.apijuegos.api.modelo.Usuario;
 import org.palomafp.apijuegos.api.repositories.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UsuarioRepo usuarioRepo;
 
     /**
-     * Este método es llamado automáticamente por Spring Security durante el proceso
+     * Llamado automáticamente por Spring Security durante el proceso
      * de autenticación para comprobar si el usuario existe.
      * @param username Nombre del usuario ingresado.
      * @return Objeto UserDetails que usa Spring internamente.
      * @throws UsernameNotFoundException Si el usuario no existe en la base de datos.
      */
     @Override
+    @NullMarked
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Buscamos el usuario en nuestro repositorio usando su nombre
         Usuario usuario = usuarioRepo.findByNombre(username);

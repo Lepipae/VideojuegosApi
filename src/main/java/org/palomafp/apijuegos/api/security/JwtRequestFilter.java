@@ -4,6 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +18,7 @@ import java.io.IOException;
 /**
  * Filtro que se ejecuta una vez por cada petición HTTP que entra a nuestra API.
  * Su objetivo es interceptar la petición, buscar el token JWT en la cabecera (Header),
- * validarlo y si todo está correcto, iniciar la sesión en el contexto de Spring Security.
+ * validarlo y si está correcto, iniciar la sesión en el contexto de Spring Security.
  * @author Andrés López
  */
 @Component
@@ -30,6 +31,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Override
+    @NullMarked
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
 

@@ -4,6 +4,7 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
@@ -22,11 +23,13 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     private String dbName;
 
     @Override
+    @NullMarked
     protected String getDatabaseName() {
         return dbName; // Usamos la variable para el nombre de la BD
     }
 
     @Override
+    @NullMarked
     public MongoClient mongoClient() {
         System.out.println("🚀 IGNORANDO AUTO-CONFIGURACIÓN - FORZANDO CONEXIÓN MANUAL A ATLAS CON VARIABLES 🚀");
 
