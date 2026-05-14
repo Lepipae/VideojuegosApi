@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +25,8 @@ public class JwtUtil {
 
     // Clave secreta para firmar el token JWT. En un entorno de producción, esto debería estar en variables de entorno o application.properties.
     // Esta cadena debe tener al menos 256 bits (32 caracteres).
-    private final String SECRET_KEY = "EstaEsUnaClaveSecretaMuyLargaYSeguraParaNuestraApiDeVideojuegos123!";
+    @Value("${CLAVE_CIFRADO}")
+    private String SECRET_KEY;
 
     /**
      * Obtiene la clave secreta generada a partir de la cadena de texto para firmar o validar tokens.
